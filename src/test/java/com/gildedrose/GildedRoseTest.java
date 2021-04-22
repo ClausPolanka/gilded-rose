@@ -4,8 +4,6 @@ package com.gildedrose;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.stream.Stream;
-
 import static com.gildedrose.ItemTestUtils.assertItemEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -97,7 +95,6 @@ public class GildedRoseTest {
         }
     }
 
-    @Ignore
     @Test
     public void whenDayPasses_thenQualityOfNormalItemsIsCappedAt50() {
         Item[] items = new Item[]{
@@ -107,13 +104,14 @@ public class GildedRoseTest {
 
         subject.updateQuality();
 
-        Item expected = new Item("Upper Capacity", 1, 50);
+        Item expected = new Item("Upper Capacity", 1, 49);
         assertItemEquals(expected, subject.items[0]);
     }
 
     /**
      * FIXME: after refactoring this behavior should FAIL!
      */
+    @Ignore
     @Test
     public void incorrectBehaviour_itemsCanBeCreatedAboveTheLimit() {
         Item[] items = new Item[]{
