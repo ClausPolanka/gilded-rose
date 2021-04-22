@@ -1,0 +1,2 @@
+Ad "Once the sell by date has passed, Quality degrades twice as fast"
+- assumption that "sell date passed" means when sellIn is negative
