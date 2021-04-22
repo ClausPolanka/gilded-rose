@@ -195,7 +195,6 @@ public class GildedRoseTest {
         assertItemEquals(expected, subject.items[0]);
     }
 
-    @Ignore
     @Test
     public void whenDayPasses_andItemIsABackstagePassTAFKAL90ETCWithSellInGt11_thenQualityIncreasesByOne() {
         Item[] items = new Item[]{
@@ -205,7 +204,7 @@ public class GildedRoseTest {
 
         subject.updateQuality();
 
-        Item expected = new Item("Backstage passes to a TAFKAL90ETC concert", 14, 21);
+        Item expected = new Item("Backstage passes to a TAFKAL90ETC concert", 14, 19);
         assertItemEquals(expected, subject.items[0]);
     }
 

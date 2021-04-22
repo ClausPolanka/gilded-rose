@@ -33,16 +33,28 @@ public class ClassifiedItem {
     }
 
     public ClassifiedItem calculateUpdate() {
+        return this
+                .recalculateSellIn()
+                .recalculateQuality();
+    }
+
+    protected ClassifiedItem recalculateSellIn() {
         ClassifiedItem calculated = new ClassifiedItem(new Item(item.name, item.sellIn, item.quality));
         Item item = calculated.getItem();
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
+        item.sellIn -= 1;
+        return calculated;
+    }
+
+    protected ClassifiedItem recalculateQuality() {
+        ClassifiedItem calculated = new ClassifiedItem(new Item(item.name, item.sellIn, item.quality));
+        Item item = calculated.getItem();
+        if (item.sellIn > 0) {
+            item.quality -= 1;
+        } else {
+            item.quality -= 2;
         }
-        item.sellIn = item.sellIn - 1;
-        if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
+        if (item.quality < 0) {
+            item.quality = 0;
         }
         return calculated;
     }
