@@ -1,2 +1,8 @@
 Ad "Once the sell by date has passed, Quality degrades twice as fast"
 - assumption that "sell date passed" means when sellIn is negative
+
+Ad "Backstage Passes"
+- assumption that Backstage Pass is exactly the Item "Backstage passes to a TAFKAL90ETC concert"
+
+Ad "Aged Brie", "Sulfuras" and "Backstage Pass"
+- assumption that case-sensetive information still holds (i.e. "Aged brie" is not a "Aged Brie")

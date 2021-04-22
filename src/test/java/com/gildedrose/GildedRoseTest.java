@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.stream.Stream;
 
+import static com.gildedrose.ItemTestUtils.assertItemEquals;
 import static org.junit.Assert.assertEquals;
 
 public class GildedRoseTest {
@@ -110,6 +111,22 @@ public class GildedRoseTest {
         assertItemEquals(expected, subject.items[0]);
     }
 
+    /**
+     * FIXME: after refactoring this behavior should FAIL!
+     */
+    @Test
+    public void incorrectBehaviour_itemsCanBeCreatedAboveTheLimit() {
+        Item[] items = new Item[]{
+                new Item("Upper Capacity", 2, 60),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item expected = new Item("Upper Capacity", 1, 59);
+        assertItemEquals(expected, subject.items[0]);
+    }
+
     @Test
     public void whenDayPasses_andQualityIncreases_thenQualityIsCappedAt50() {
         Item[] items = new Item[]{
@@ -128,9 +145,126 @@ public class GildedRoseTest {
         assertItemEquals(expectedDay02, subject.items[0]);
     }
 
-    private static void assertItemEquals(Item expected, Item actual) {
-        assertEquals(expected.quality, actual.quality);
-        assertEquals(expected.sellIn, actual.sellIn);
-        assertEquals(expected.name, actual.name);
+    @Test
+    public void whenDayPasses_andBriIsAlreadyPassedSellIn_thenQualityIsCappedAt50() {
+        Item[] items = new Item[]{
+                new Item("Aged Brie", 0, 49),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item expectedDay01 = new Item("Aged Brie", -1, 50);
+        assertItemEquals(expectedDay01, subject.items[0]);
+
+        subject.updateQuality();
+
+        Item expectedDay02 = new Item("Aged Brie", -2, 50);
+        assertItemEquals(expectedDay02, subject.items[0]);
+    }
+
+    @Test
+    public void whenDayPasses_andItemIsSulfuras_thenNeitherSellInNorQualityChanges() {
+        Item[] items = new Item[]{
+                new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+                new Item("Sulfuras, Hand of Ragnaros", 1, 80),
+                new Item("Sulfuras, Hand of Ragnaros", -1, 80),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item[] expected = new Item[] {
+                new Item("Sulfuras, Hand of Ragnaros", 0, 80),
+                new Item("Sulfuras, Hand of Ragnaros", 1, 80),
+                new Item("Sulfuras, Hand of Ragnaros", -1, 80)
+        };
+        for(int i = 0; i < expected.length; i++) {
+            assertItemEquals(expected[i], subject.items[i]);
+        }
+    }
+
+    @Test
+    public void whenDayPasses_andItemIsABackstagePassTAFKAL80ETCWithSellInGt11_thenQualityIncreasesByOne() {
+        Item[] items = new Item[]{
+                new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item expected = new Item("Backstage passes to a TAFKAL80ETC concert", 14, 21);
+        assertItemEquals(expected, subject.items[0]);
+    }
+
+    @Ignore
+    @Test
+    public void whenDayPasses_andItemIsABackstagePassTAFKAL90ETCWithSellInGt11_thenQualityIncreasesByOne() {
+        Item[] items = new Item[]{
+                new Item("Backstage passes to a TAFKAL90ETC concert", 15, 20),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item expected = new Item("Backstage passes to a TAFKAL90ETC concert", 14, 21);
+        assertItemEquals(expected, subject.items[0]);
+    }
+
+    @Test
+    public void whenDayPasses_andItemIsABackstagePassTAFKAL80ETCWithSellInBetween10And6_thenQualityIncreasesByTwo() {
+        Item[] items = new Item[]{
+                new Item("Backstage passes to a TAFKAL80ETC concert", 10, 30),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 6, 35),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item[] expected = new Item[] {
+                new Item("Backstage passes to a TAFKAL80ETC concert", 9, 32),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 37),
+        };
+        for(int i = 0; i < expected.length; i++) {
+            assertItemEquals(expected[i], subject.items[i]);
+        }
+    }
+
+    @Test
+    public void whenDayPasses_andItemIsABackstagePassTAFKAL80ETCWithSellInBetween5And1_thenQualityIncreasesByThree() {
+        Item[] items = new Item[]{
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 30),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 1, 35),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item[] expected = new Item[] {
+                new Item("Backstage passes to a TAFKAL80ETC concert", 4, 33),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 0, 38),
+        };
+        for(int i = 0; i < expected.length; i++) {
+            assertItemEquals(expected[i], subject.items[i]);
+        }
+    }
+
+    @Test
+    public void whenDayPasses_andItemIsABackstagePassTAFKAL80ETCWithSellInLE0_thenQualitySetToZero() {
+        Item[] items = new Item[]{
+                new Item("Backstage passes to a TAFKAL80ETC concert", 0, 38),
+                new Item("Backstage passes to a TAFKAL80ETC concert", -1, 42),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item[] expected = new Item[] {
+                new Item("Backstage passes to a TAFKAL80ETC concert", -1, 0),
+                new Item("Backstage passes to a TAFKAL80ETC concert", -2, 0),
+        };
+        for(int i = 0; i < expected.length; i++) {
+            assertItemEquals(expected[i], subject.items[i]);
+        }
     }
 }
