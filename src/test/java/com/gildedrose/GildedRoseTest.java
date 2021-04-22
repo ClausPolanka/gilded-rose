@@ -265,4 +265,25 @@ public class GildedRoseTest {
             assertItemEquals(expected[i], subject.items[i]);
         }
     }
+
+    @Test
+    public void whenDayPasses_andItemIsAConjuredItem_thenQualityIsReducedByTwo() {
+        Item[] items = new Item[]{
+                new Item("Conjured", 3, 11),
+                new Item("Conjured", 0, 4),
+                new Item("Conjured", -1, 1),
+                new Item("Conjured", -1, 7),
+        };
+        GildedRose subject = new GildedRose(items);
+
+        subject.updateQuality();
+
+        Item[] expected = new Item[]{
+                new Item("Conjured", 2, 9),
+                new Item("Conjured", -1, 0),
+                new Item("Conjured", -2, 0),
+                new Item("Conjured", -2, 3),
+        };
+        assertItemEquals(expected, subject.items);
+    }
 }

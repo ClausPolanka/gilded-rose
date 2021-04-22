@@ -7,6 +7,7 @@ public class ClassifiedItem {
     public static final String ITEM_AGED_BRIE = "Aged Brie";
     public static final String ITEM_SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String ITEM_BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String ITEM_CONJURED = "Conjured";
     protected final Item item;
 
     ClassifiedItem(Item item) {
@@ -24,6 +25,8 @@ public class ClassifiedItem {
             return new ClassifiedItemSulfuras(item);
         } else if (ITEM_BACKSTAGE.equals(item.name)) {
             return new ClassifiedItemBackstagePass(item);
+        } else if (ITEM_CONJURED.equals(item.name)) {
+            return new ClassifiedItemConjured(item);
         } else {
             return new ClassifiedItem(item);
         }

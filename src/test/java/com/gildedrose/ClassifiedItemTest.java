@@ -45,6 +45,15 @@ public class ClassifiedItemTest {
     }
 
     @Test
+    public void givenGivenConjured_whenBuildItem_thenSpecializedClassifiedItemBehaviourIsReturned() {
+        ClassifiedItem defaultItem = ClassifiedItem.buildItem(new Item("Conjured", 29, 30));
+
+        ClassifiedItemConjured expected = new ClassifiedItemConjured(new Item("Conjured", 29, 30));
+
+        assertItemEquals(expected, defaultItem);
+    }
+
+    @Test
     public void givenNull_whenBuildItem_thenDetailedNullPointerExceptionIsThrown() {
         try {
             ClassifiedItem.buildItem(null);

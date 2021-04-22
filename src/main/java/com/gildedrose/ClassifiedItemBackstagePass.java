@@ -27,10 +27,8 @@ public class ClassifiedItemBackstagePass extends ClassifiedItem {
 
         item.sellIn -= 1;
         if (item.sellIn < 0) {
-            // replace with quality = 0; will keep it for tracing original logic
-            item.quality = item.quality - item.quality;
+            item.quality = 0;
         }
-
         return calculated;
     }
 }
