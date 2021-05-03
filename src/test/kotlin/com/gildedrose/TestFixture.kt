@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
         BackstagePassesItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
         BackstagePassesItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
         // this conjured item does not work properly yet
-        BasicItem("Conjured Mana Cake", 3, 6))
+        ConjuredItem("Conjured Mana Cake", 3, 6))
 
     val app = GildedRose(items)
 

@@ -218,6 +218,66 @@ internal class GildedRoseTest {
         assertEqualsItems(app.items[0], Item("Backstage passes to a TAFKAL80ETC concert", 4, 50))
     }
 
+    @Test
+    fun `conjured items should decrease quality by 2 when sellIn is positive`() {
+        val items = arrayOf<BasicItem>(ConjuredItem("Conjured Mana Cake", 5, 5))
+        val app = GildedRose(items)
+
+        app.updateQuality()
+
+        assertEqualsItems(app.items[0], Item("Conjured Mana Cake", 4, 3))
+    }
+
+    @Test
+    fun `conjured items should decrease quality by 4 when sellIn is lte 0`() {
+        val items = arrayOf<BasicItem>(ConjuredItem("Conjured Mana Cake", 0, 5))
+        val app = GildedRose(items)
+
+        app.updateQuality()
+
+        assertEqualsItems(app.items[0], Item("Conjured Mana Cake", -1, 1))
+    }
+
+    @Test
+    fun `conjured items should not decrease quality more than min when sellIn is positive`() {
+        val items = arrayOf<BasicItem>(ConjuredItem("Conjured Mana Cake", 5, 1))
+        val app = GildedRose(items)
+
+        app.updateQuality()
+
+        assertEqualsItems(app.items[0], Item("Conjured Mana Cake", 4, 0))
+    }
+
+    @Test
+    fun `conjured items should not decrease quality when quality is min and sellIn is positive`() {
+        val items = arrayOf<BasicItem>(ConjuredItem("Conjured Mana Cake", 5, 0))
+        val app = GildedRose(items)
+
+        app.updateQuality()
+
+        assertEqualsItems(app.items[0], Item("Conjured Mana Cake", 4, 0))
+    }
+
+    @Test
+    fun `conjured items should not decrease quality more than min when sellIn is lte 0`() {
+        val items = arrayOf<BasicItem>(ConjuredItem("Conjured Mana Cake", 0, 3))
+        val app = GildedRose(items)
+
+        app.updateQuality()
+
+        assertEqualsItems(app.items[0], Item("Conjured Mana Cake", -1, 0))
+    }
+
+    @Test
+    fun `conjured items should not decrease quality when quality is min and sellIn is lte 0`() {
+        val items = arrayOf<BasicItem>(ConjuredItem("Conjured Mana Cake", 0, 0))
+        val app = GildedRose(items)
+
+        app.updateQuality()
+
+        assertEqualsItems(app.items[0], Item("Conjured Mana Cake", -1, 0))
+    }
+
     private fun assertEqualsItems(actual: Item, expected: Item) {
         assertEquals("Item name", expected.name, actual.name)
         assertEquals("Item sellIn", expected.sellIn, actual.sellIn)
