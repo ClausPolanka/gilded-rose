@@ -8,7 +8,9 @@ open class BasicItem(name: String, sellIn: Int, quality: Int) : Item(name, sellI
         sellIn -= 1
 
         if (sellIn < 0) {
-            quality -= 1
+            if(quality > 0) {
+                quality -= 1
+            }
         }
     }
 }

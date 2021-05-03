@@ -8,7 +8,9 @@ class AgedBrieItem(name: String, sellIn: Int, quality: Int) : BasicItem(name, se
         sellIn -= 1
 
         if (sellIn < 0) {
-            quality += 1
+            if (quality < 50) {
+                quality += 1
+            }
         }
     }
 }

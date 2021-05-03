@@ -6,10 +6,14 @@ class BackstagePassesItem(name: String, sellIn: Int, quality: Int) : BasicItem(n
             quality += 1
 
             if (sellIn <= 10) {
-                quality += 1
+                if (quality < 50) {
+                    quality += 1
+                }
             }
             if (sellIn <= 5) {
-                quality += 1
+                if (quality < 50) {
+                    quality += 1
+                }
             }
         }
 
