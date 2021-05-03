@@ -12,9 +12,9 @@ internal class GildedRoseTest {
 
         app.updateQuality()
 
-        assertEquals("Basic Item", app.items[0].name)
-        assertEquals(0, app.items[0].sellIn)
-        assertEquals(4, app.items[0].quality)
+        assertEquals("Item name", "Basic Item", app.items[0].name)
+        assertEquals("Item sellIn", 0, app.items[0].sellIn)
+        assertEquals("Item quality", 4, app.items[0].quality)
     }
 
     @Test
@@ -24,9 +24,9 @@ internal class GildedRoseTest {
 
         app.updateQuality()
 
-        assertEquals("Basic Item", app.items[0].name)
-        assertEquals(-1, app.items[0].sellIn)
-        assertEquals(3, app.items[0].quality)
+        assertEquals("Item name", "Basic Item", app.items[0].name)
+        assertEquals("Item sellIn", -1, app.items[0].sellIn)
+        assertEquals("Item quality", 3, app.items[0].quality)
     }
 
     @Test
@@ -36,9 +36,9 @@ internal class GildedRoseTest {
 
         app.updateQuality()
 
-        assertEquals("Basic Item", app.items[0].name)
-        assertEquals(0, app.items[0].sellIn)
-        assertEquals(0, app.items[0].quality)
+        assertEquals("Item name", "Basic Item", app.items[0].name)
+        assertEquals("Item sellIn", 0, app.items[0].sellIn)
+        assertEquals("Item quality", 0, app.items[0].quality)
     }
 
     @Test
@@ -48,9 +48,9 @@ internal class GildedRoseTest {
 
         app.updateQuality()
 
-        assertEquals("Basic Item", app.items[0].name)
-        assertEquals(-1, app.items[0].sellIn)
-        assertEquals(0, app.items[0].quality)
+        assertEquals("Item name", "Basic Item", app.items[0].name)
+        assertEquals("Item sellIn", -1, app.items[0].sellIn)
+        assertEquals("Item quality", 0, app.items[0].quality)
     }
 
     @Test
@@ -60,9 +60,9 @@ internal class GildedRoseTest {
 
         app.updateQuality()
 
-        assertEquals("Basic Item", app.items[0].name)
-        assertEquals(-1, app.items[0].sellIn)
-        assertEquals(0, app.items[0].quality)
+        assertEquals("Item name", "Basic Item", app.items[0].name)
+        assertEquals("Item sellIn",-1, app.items[0].sellIn)
+        assertEquals("Item quality", 0, app.items[0].quality)
     }
 
 }
