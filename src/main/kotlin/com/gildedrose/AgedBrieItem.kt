@@ -7,7 +7,7 @@ class AgedBrieItem(name: String, sellIn: Int, quality: Int) : BasicItem(name, se
         }
         sellIn -= 1
 
-        if (sellIn < 0) {
+        if (sellIn < EXPIRATION_AT) {
             if (quality < MAX_QUALITY) {
                 quality += 1
             }

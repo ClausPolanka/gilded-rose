@@ -8,7 +8,7 @@ class ConjuredItem(name: String, sellIn: Int, quality: Int) : BasicItem(name, se
 
         sellIn -= 1
 
-        if (sellIn < 0) {
+        if (sellIn < EXPIRATION_AT) {
             if (quality > MIN_QUALITY) {
                 quality = maxOf(quality - 2, 0)
             }

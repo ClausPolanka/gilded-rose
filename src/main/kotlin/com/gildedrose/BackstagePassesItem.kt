@@ -19,7 +19,7 @@ class BackstagePassesItem(name: String, sellIn: Int, quality: Int) : BasicItem(n
 
         sellIn -= 1
 
-        if(sellIn < 0) {
+        if(sellIn < EXPIRATION_AT) {
             quality = 0
         }
 

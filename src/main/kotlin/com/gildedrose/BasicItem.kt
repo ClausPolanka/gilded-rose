@@ -11,7 +11,7 @@ open class BasicItem(name: String, sellIn: Int, quality: Int) : Item(name, sellI
         }
         sellIn -= 1
 
-        if (sellIn < 0) {
+        if (sellIn < EXPIRATION_AT ) {
             if(quality > MIN_QUALITY) {
                 quality -= 1
             }
