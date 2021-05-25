@@ -118,16 +118,18 @@ class GildedRoseTest {
     @Test
     void updateQulaityNoDaysLeft() {
         //arrange
-        Item[] items = new Item[]{new Item("Some ITEM", 0, 40)};
+        Item[] items = new Item[]{new Item("Some ITEM", 1, 40)};
         GildedRose app = new GildedRose(items);
 
         //act
         app.updateQuality();
+        app.updateQuality();
+        app.updateQuality();
 
         //assert
         Assertions.assertEquals("Some ITEM", app.items[0].name);
-        Assertions.assertEquals(-1, app.items[0].sellIn);
-        Assertions.assertEquals(38, app.items[0].quality);
+        Assertions.assertEquals(-2, app.items[0].sellIn);
+        Assertions.assertEquals(35, app.items[0].quality);
     }
 
     @Test
