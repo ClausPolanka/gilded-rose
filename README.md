@@ -1,5 +1,5 @@
 # George Backend Chapter - Coding Challenge
-Congratulations. You made it to our next recruiting stage which is a coding challenge. In this stage you have to show practical skills in the things which you discussed in the previous recruiting stage:
+Congratulations. You made it to our next recruiting stage which is a coding challenge. In this stage you have to show practical skills in the things which we discussed in the previous recruiting stage:
 - Object-Oriented Programming
 - Refactoring
 - Automated Testing (Developer Tests)
@@ -7,10 +7,8 @@ Congratulations. You made it to our next recruiting stage which is a coding chal
 This stage contains one part
 -  Remote-Pair-Programming Sessions (4 hours)
 
-__Please note__: The home assignment is the precondition for the Remote-Pair-Programming Sessions. Only if we are happy with part 1 you will be invited to part 2 of our coding challenge stage. 
-
 ### Remote-Pair-Programming Sessions
-You will collaborate in four sessions with George Backend Chapter team members in a remote fashion by using Skype. You will receive more details about the Remote-Pair-Programming sessions via email.
+You will collaborate in four sessions with George Backend Chapter team members in a remote fashion using Skype. You will receive more details about the Remote-Pair-Programming sessions via email.
 
 ### Exercise: Gilded Rose Kata
 Please find the requirements for the Gilded Rose Kata on the following [website](https://kata-log.rocks/gilded-rose-kata).
@@ -46,8 +44,8 @@ Just for clarification, an item can never have its Quality increase above 50, ho
 
 ### Focus
 Please focus on code quality by applying
-- Object-Oriented Design, 
-- Refactoring and 
+- Object-Oriented Design,
+- Refactoring and
 - Developer-Tests (aka Unit- and Integration-Tests).
 
 ### Feature Branches
@@ -57,14 +55,14 @@ For each session, please create a branch with the following pattern: `firstname_
 
 For the Remote-Pair-Programming Sessions please use the first name as a postfix of the team member who is going to work with you.
 
-### Assumptions 
+### Assumptions
 In case the requirements are ambiguous, please write down your assumptions into the project's `assumptions.txt` file. Please always create a section for each iteration and put your assumptions under this section. The reason for this is, so that we can follow certain design decisions in your code which you came up with based on your assumptions.
 
 ### Evaluation
 This example might seem a bit hypothetical, but we believe it small but complicated enough, that it makes sense to come up with an Object-Oriented Design which is more than implementing your whole solution in a single main method 😉. The evaluation won't take longer than 3 work days. If we are happy with your solution we will send you the information for the next steps of our recruiting process which will be done by someone from our HR-department. In case we won't continue the recruiting process with you, we will send you a detailed feedback of our evaluation.
 
 ### Requirements
-Please use Java 8 or Kotlin as a programming language. No Framework is allowed for this exercise. No other library than JUnit must be used. Currently JUnit 5 is configured in the `pom.xml`. In case you prefer JUnit 4 over 5 please change the `pom.xml` file accordingly. We don’t allow any mocking library. In case you see the need for mocking, please hand roll your mocks.
+Please use Java 8 or Kotlin as a programming language. No Framework is allowed for this exercise. No other library than JUnit must be used. Currently, JUnit 5 is configured in the `pom.xml`. In case you prefer JUnit 4 over 5 please change the `pom.xml` file accordingly. We don’t allow any mocking library. In case you see the need for mocking, please hand roll your mocks.
 
 ### Questions
 In case this description triggers some questions on your side, please don’t hesitate to get in touch with us. Other than that, we recommend starting with this exercise as soon as possible after you have received it. We wish you good luck and are very much looking forward to your solution.
